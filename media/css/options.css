@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Titillium+Web:400,300,200,200italic&subset=latin,latin-ext);
+
+#after-install-text{
+    display: none;
+}
+#tiledesk-wrapper div, #tiledesk-wrapper input{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+#tiledesk-wrapper{
+    background: #f1f1f1;
+    color:#434a54;
+    font-family: 'Titillium Web', sans-serif;
+    height:100%;
+    font-size:15px;
+}
+#tiledesk-chat-wp-plugin{
+    width: 100%;
+    max-width: 1206px;
+    height: 100%;
+    background: url(../img/bg.png) no-repeat 50% top;
+    z-index:1;
+    margin: 0 auto;
+    position: relative;
+    padding: 177px 190px 0px 190px;
+}
+#tiledesk-chat-wp-plugin h1{
+    margin: 0;
+    text-align: center;
+    font-weight: 300;
+    font-size:30px;
+    margin-top:15px;
+}
+#tiledesk-chat-wp-plugin p{
+    text-align: center;
+    margin-top: 25px;
+    font-weight: 300;
+    font-size: 15px;
+}
+#input-blocks{
+    width: 942px;
+    background: url(../img/blocks-bg.png) no-repeat 50% 167px;
+    margin: 0 -58px;
+    overflow: hidden;
+    padding-left: 100px;
+}
+#tiledesk-chat-login,
+#tiledesk-chat-panel{
+    float:left;
+    width: 365px;
+    margin-top: 20px;
+    padding:20px;
+}
+#tiledesk-chat-login{	
+    margin-right: 11px;
+}
+#tiledesk-chat-panel{	
+    border: 1px solid #dadada;
+    border-left: 3px solid #f4826f;
+    background: #FFF;
+}
+#input-blocks h2,
+#select-project h2
+{
+    font-weight: 400;
+    margin: 0;
+    font-size: 16px;
+    border-bottom: 1px solid #dadada;
+    border-left: 3px solid #f4826f;
+    padding: 12px 18px;
+}
+#tiledesk-apply-account {
+    border: 1px solid #dadada;
+    padding: 20px;
+    margin-top: 20px;
+    padding-left: 61px;
+    line-height: 1.4;
+    background: url(../img/checkmark.png) no-repeat 20px 50%;
+}
+.form-control{
+    margin-top: 12px;
+}
+.form-control .text-input{
+    height: 38px;
+    width: 100%;
+    padding: 0 13px;
+    font-size: 14px;
+    max-width: 320px;
+}
+h2+.form-control{
+    margin-top:18px;
+}
+.tiledesk-button{
+    font-family: 'Titillium Web', sans-serif;
+    margin-top:20px!important;
+    height:40px!important;
+    line-height:38px!important;
+    text-align:center;
+    width:170px;
+}
+.button-primary.tiledesk-button{background:#5d9cec;}
+.button-primary.tiledesk-button:hover{background:#4a89dc;}
+	
+/* placeholder */
+::-webkit-input-placeholder { color:#aeb1b8; font-style: italic; font-weight: 200!important}
+::-moz-placeholder { color:#aeb1b8; font-style: italic; font-weight: 200!important} /* firefox 19+ */
+:-ms-input-placeholder { color:#aeb1b8; font-style: italic; font-weight: 200!important} /* ie */
+input:-moz-placeholder { color:#aeb1b8; font-style: italic; font-weight: 200!important}
+
+/* Project selector */
+#select-project{display:none;margin:0 auto;background: url(../img/blocks-bg.png) no-repeat 50% 171px;padding:28px 244px 40px 244px;}
+#select-project select{width: 100%;height: 40px!important;}
+
+/* error */
+#tiledesk-wrapper .error{display: none;margin-left: 60px;margin-right: 14px;}
+#tiledesk-wrapper .error p{margin: 10px 0;}
