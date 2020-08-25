@@ -6,7 +6,7 @@
  * Description: Tiledesk Live Chat - Add live chat with integrated support bot in your pages with just a few clicks!
  * Version: 1.0.1
  * Author: tiledesk
- * Author URI: https://www.tiledesk.com/
+ * Author URI: https://www.frontiere21.it/
  * License: GPL2
  */
 define('TILEDESKCHAT_VERSION', '1.0.1');
