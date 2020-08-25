@@ -1,5 +1,6 @@
 var TiledeskChatWP = {
-    apiUrl: 'https://api.tiledesk.com/v1/',
+    // apiUrl: 'https://api.tiledesk.com/v1/',
+    apiUrl: 'https://api.tiledesk.com/v2/',
     chatUrl: 'https://www.tiledesk.com/',
     token: null,
     setRedirectLink: function(url){

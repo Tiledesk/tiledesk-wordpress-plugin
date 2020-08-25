@@ -1,21 +1,22 @@
 <?php
 
 /**
- * Plugin Name: Tiledesk Chat
+ * Plugin Name: tiledesk Chat
  * Plugin URI: https://www.tiledesk.com/
  * Description: Tiledesk Live Chat - Add live chat with integrated support bot in your pages with just a few clicks!
- * Version: 1.0.0
- * Author: Tiledesk
- * Author URI: http://www.frontiere21.it/
+ * Version: 1.0.1
+ * Author: tiledesk
+ * Author URI: https://www.tiledesk.com/
  * License: GPL2
  */
-define('TILEDESKCHAT_VERSION', '1.0.0');
+define('TILEDESKCHAT_VERSION', '1.0.1');
 
 class TiledeskLiveChat
 {
-    const SCRIPT_URL = '//code.tiledesk.co/';
-    const API_URL = 'https://api-v2.tiledesk.co';
-    const CHAT_URL = 'https://support.tiledesk.com/dashboard/#/project/';
+    // const SCRIPT_URL = '//code.tiledesk.co/';
+    // const API_URL = 'https://api-v2.tiledesk.co';
+    const CONSOLE_URL = 'https://console.tiledesk.com/v2/dashboard/#/project/';
+    // const CONSOLE_URL = 'https://support.tiledesk.com/dashboard/#/project/';
     const PUBLIC_KEY_OPTION = 'tiledesk-one-public-key';
     const PRIVATE_KEY_OPTION = 'tiledesk-one-private-key';
     const ASYNC_LOAD_OPTION = 'tiledesk-async-load';
@@ -36,14 +37,14 @@ class TiledeskLiveChat
             delete_option(TiledeskLiveChat::PRIVATE_KEY_OPTION);
         }
 
-       
+
 
         if (get_option(TiledeskLiveChat::PUBLIC_KEY_OPTION)) {
             add_action('admin_footer', array($this, 'adminJS'));
         }
-        
+
         if (!is_admin()) {
-                add_action('wp_footer', array($this, 'enqueueScriptsAsync'), PHP_INT_MAX);
+            add_action('wp_footer', array($this, 'enqueueScriptsAsync'), PHP_INT_MAX);
         } else if (current_user_can('activate_plugins')) {
             add_action('admin_menu', array($this, 'addAdminMenuLink'));
             add_action('admin_enqueue_scripts', array($this, 'enqueueAdminScripts'));
@@ -61,17 +62,19 @@ class TiledeskLiveChat
 
     public static function getRedirectUrl($projectid)
     {
-    
-            return TiledeskLiveChat::CHAT_URL . $projectid . '/home';
+
+        return TiledeskLiveChat::CONSOLE_URL . $projectid . '/home';
     }
 
     public function pluginActionLinks($links, $file)
     {
-        
+
         if (strpos($file, basename(__FILE__)) !== false) {
             if (get_option(TiledeskLiveChat::PUBLIC_KEY_OPTION)) {
-                $links[] = '<a href="' . admin_url('admin-post.php') . '?action=' . TiledeskLiveChat::CLEAR_ACCOUNT_DATA_ACTION . '">' . esc_html__('Clear Account Data',
-                        TiledeskLiveChat::TILEDESK_PLUGIN_NAME) . '</a>';
+                $links[] = '<a href="' . admin_url('admin-post.php') . '?action=' . TiledeskLiveChat::CLEAR_ACCOUNT_DATA_ACTION . '">' . esc_html__(
+                    'Clear Account Data',
+                    TiledeskLiveChat::TILEDESK_PLUGIN_NAME
+                ) . '</a>';
                 if (get_option(TiledeskLiveChat::ASYNC_LOAD_OPTION)) {
                     $toggleAsyncLabel = '✓';
                     $onclickPart = 'onclick="return confirm(\'Disabling asynchronous loading of the chat widget may affect the page loading time of your website. Are you sure you want to disable the asynchronous loading?\');"';
@@ -79,8 +82,10 @@ class TiledeskLiveChat
                     $toggleAsyncLabel = '✘';
                     $onclickPart = '';
                 }
-                $links[] = '<a href="' . admin_url('admin-post.php') . '?action=' . TiledeskLiveChat::TOGGLE_ASYNC_ACTION . '" ' . $onclickPart . '>' . esc_html__($toggleAsyncLabel . ' Asynchronous loading',
-                        TiledeskLiveChat::TILEDESK_PLUGIN_NAME) . '</a>';
+                $links[] = '<a href="' . admin_url('admin-post.php') . '?action=' . TiledeskLiveChat::TOGGLE_ASYNC_ACTION . '" ' . $onclickPart . '>' . esc_html__(
+                    $toggleAsyncLabel . ' Asynchronous loading',
+                    TiledeskLiveChat::TILEDESK_PLUGIN_NAME
+                ) . '</a>';
             }
         }
         return $links;
@@ -108,7 +113,7 @@ class TiledeskLiveChat
             exit;
         }
 
-// rivedere
+        // rivedere
         if (empty($_POST['public_key'])) {
             exit;
         }
@@ -123,19 +128,20 @@ class TiledeskLiveChat
         $publicKey = TiledeskLiveChat::getPublicKey();
         $asyncScript = <<<SRC
     
-    <script type="application/javascript">
+  
+        <script type="application/javascript">
         window.tiledeskSettings = 
-          {
+            {
             projectid: "$publicKey",
-          };
-          (function(d, s, id) {
+            };
+            (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id; //js.async=!0;
-            js.src = "https://widget.tiledesk.com/v2/tiledesk.js";
+            js = d.createElement(s); js.id = id;
+            js.src = "https://widget.tiledesk.com/v4/launch.js";
             fjs.parentNode.insertBefore(js, fjs);
-          }(document, 'script', 'tiledesk-jssdk'));
-      </script>
+            }(document, 'script', 'tiledesk-jssdk'));
+        </script>
 
 SRC;
         echo $asyncScript;
@@ -153,15 +159,13 @@ SRC;
 
     public function enqueueAdminScripts()
     {
-        wp_enqueue_script('tiledesk-chat-admin', plugins_url('media/js/options.js', __FILE__), array(), TILEDESKCHAT_VERSION,
-            true);
-        wp_enqueue_style('tiledesk-chat-admin-style', plugins_url('media/css/options.css', __FILE__), array(),
-            TILEDESKCHAT_VERSION);
+        wp_enqueue_script('tiledesk-chat-admin', plugins_url('media/js/options.js', __FILE__), array(), TILEDESKCHAT_VERSION, true);
+        wp_enqueue_style('tiledesk-chat-admin-style', plugins_url('media/css/options.css', __FILE__), array(), TILEDESKCHAT_VERSION);
     }
 
     public function adminJS()
     {
-        $publicKey = TiledeskLiveChat::getPublicKey();        
+        $publicKey = TiledeskLiveChat::getPublicKey();
         $redirectUrl = '';
 
         if ($publicKey && $publicKey != 'false') {
@@ -176,7 +180,11 @@ SRC;
     public function addAdminMenuLink()
     {
         add_menu_page(
-            'Tiledesk Chat', 'Tiledesk Chat', 'manage_options', 'tiledesk-chat', array($this, 'addAdminPage'),
+            'Tiledesk Chat',
+            'Tiledesk Chat',
+            'manage_options',
+            'tiledesk-chat',
+            array($this, 'addAdminPage'),
             content_url() . '/plugins/' . TiledeskLiveChat::TILEDESK_PLUGIN_NAME . '/media/img/icon.png'
         );
     }
