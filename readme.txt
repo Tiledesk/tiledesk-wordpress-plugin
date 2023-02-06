@@ -1,18 +1,17 @@
-=== Tiledesk Live Chat ===
+=== Tiledesk Live Chat for WordPress ===
 Contributors: @tiledesk
 Tags: free live chat, plugin, facebook, admin, live chat, chat, livechat, post, tiledesk, widget, post, posts, twitter, zendesk, mailchimp
-Requires at least: 3.0
-Tested up to: 5.1
+Requires at least: 5.0
+Tested up to: 6.1.1
 Stable tag: trunk
 License: GPLv2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Tiledesk Live Chat – Free live chat for your website with integrated Bot. It integrates into your site in just a few clicks.
+Tiledesk Live Chat for WordPress – Free live chat for your website with integrated chat bots. It integrates into your site in just a few clicks.
 
 == Description ==
 
-Tiledesk is a free live chat service with intelligent Bots ready to use in minutes.
-
+Tiledesk is a free live chat service with intelligent chat bots ready to use in minutes.
 
 == Installation ==
 1. Go to WordPress Control Panel
@@ -32,12 +31,17 @@ Tiledesk is a free live chat service with intelligent Bots ready to use in minut
 
 == Changelog ==
 
-
+= 1.0.1 =
+* Bug fixing
 
 = 1.0 =
 * Initial release.
 
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+* This version fixes a security related bug. Upgrade immediately.
+
 = 1.0 =
 * Initial release.
