@@ -21,6 +21,11 @@ class TiledeskLiveChat {
 	const TILEDESK_PLUGIN_NAME = 'tiledesk-live-chat';
 	const JS_SDK = 'https://widget.tiledesk.com/v4/launch.js';
 
+	/**
+	 * Instruct WordPress on the actions to register and hooks to run in specific cases
+	 *
+	 * @return void
+	 */
 	public function __construct() {
 		if ( ! empty( $_GET['tiledesk_chat_version'] ) ) {
 			echo esc_attr( TILEDESKCHAT_VERSION );
@@ -48,10 +53,24 @@ class TiledeskLiveChat {
 		}
 	}
 
+	/**
+	 * Handle plugin activation, set async option to true for future use
+	 *
+	 * @return void
+	 */
 	public static function activate() {
 		update_option( TiledeskLiveChat::ASYNC_LOAD_OPTION, true );
 	}
 
+	/**
+	 * Hook into plugin_action_links to enrich plugin links,
+	 * allowing user to clear account data from plugins page.
+	 *
+	 * @param $links
+	 * @param $file
+	 *
+	 * @return mixed
+	 */
 	public function pluginActionLinks( $links, $file ) {
 		if ( strpos( $file, basename( __FILE__ ) ) !== false ) {
 			if ( get_option( TiledeskLiveChat::PUBLIC_KEY_OPTION ) ) {
@@ -73,6 +92,7 @@ class TiledeskLiveChat {
 	}
 
 	public static function get_redirect_url( $project_id ) {
+		// Allow URL override
 		$console_url = apply_filters('tiledesk_console_url', TiledeskLiveChat::CONSOLE_URL);
 		return $console_url . $project_id . '/home';
 	}
@@ -103,6 +123,8 @@ class TiledeskLiveChat {
 	 *
 	 * While WordPress has a system to load JavaScript assets, unfortunately it still doesn't support
 	 * the ES6 `type=module` convention, so we chose to print the script tags manually in the footer.
+	 *
+	 * @return void
 	 */
 	public function scripts_in_footer() {
 		$projectid = TiledeskLiveChat::getPublicKey();
@@ -119,6 +141,7 @@ class TiledeskLiveChat {
 			$widget_config['userFullname'] = esc_attr( $current_user->display_name );
 		}
 
+		// Allow URL override
 		$tiledesk_jssdk_url = apply_filters('tiledesk_jssdk_url', TiledeskLiveChat::JS_SDK);
 
 		require_once __DIR__ . '/templates/footer-embed.php';
@@ -139,6 +162,12 @@ class TiledeskLiveChat {
 		wp_enqueue_style( 'tiledesk-chat-admin-style', plugins_url( 'media/css/options.css', __FILE__ ), [], TILEDESKCHAT_VERSION );
 	}
 
+	/**
+	 * Hook into admin_footer to add custom admin logic,
+	 * mainly allowing Tiledesk menu item to open Console.
+	 *
+	 * @return void
+	 */
 	public function scripts_in_admin_footer() {
 		$publicKey   = TiledeskLiveChat::getPublicKey();
 		$redirectUrl = '';
