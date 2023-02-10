@@ -3,7 +3,7 @@
 /**
  * Plugin Name: Tiledesk Live Chat for WordPress
  * Plugin URI: https://www.tiledesk.com/
- * Description: Add Tiledesk Live Chat with integrated support bot in your pages with just a few clicks.
+ * Description: Add Tiledesk Live Chat into your site allowing you to build complex conversational bots in just a few clicks.
  * Version: 1.0.2
  * Author: tiledesk
  * Author URI: https://www.tiledesk.com/
@@ -73,7 +73,8 @@ class TiledeskLiveChat {
 	}
 
 	public static function get_redirect_url( $project_id ) {
-		return TiledeskLiveChat::CONSOLE_URL . $project_id . '/home';
+		$console_url = apply_filters('tiledesk_console_url', TiledeskLiveChat::CONSOLE_URL);
+		return $console_url . $project_id . '/home';
 	}
 
 	public function ajaxTiledeskChatSaveKeys() {
@@ -118,6 +119,8 @@ class TiledeskLiveChat {
 			$widget_config['userFullname'] = esc_attr( $current_user->display_name );
 		}
 
+		$tiledesk_jssdk_url = apply_filters('tiledesk_jssdk_url', TiledeskLiveChat::JS_SDK);
+
 		require_once __DIR__ . '/templates/footer-embed.php';
 	}
 
@@ -127,6 +130,8 @@ class TiledeskLiveChat {
 		if ( $publicKey ) {
 			return $publicKey;
 		}
+
+		return null;
 	}
 
 	public function enqueue_admin_scripts() {
