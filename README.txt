@@ -79,6 +79,16 @@ add_filter( 'tiledesk_jssdk_url', function ( $url ) {
 }, 10 );
 ```
 
+= Are there any other resources I can use to learn more about Tiledesk? =
+
+Yes. Most of the information you'll need is available on our website, but you can also have a look at out Developer documentation, Github repositories and Discord community:
+
+- [Website](https://tiledesk.com/)
+- [Knowledge Base](https://gethelp.tiledesk.com/)
+- [Developer Hub](https://developer.tiledesk.com/)
+- [Github Open Source](https://github.com/Tiledesk/)
+- [Discord Community](https://discord.gg/nERZEZ7SmG)
+
 == Changelog ==
 
 = 1.0.2 =
