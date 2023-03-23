@@ -3,7 +3,7 @@ Contributors: tiledesk
 Tags: free live chat, chatbot, bot, ai, artificial, intelligence, ml, machine, learning, nlp, facebook, live chat, chat, livechat, tiledesk, widget, twitter, zendesk, mailchimp
 Requires at least: 5.0
 Tested up to: 6.1.1
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 Requires PHP: 7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -67,17 +67,19 @@ Currently, Tiledesk for WordPress is available in English. Other languages are i
 
 This plugin exclusively works with our cloud platform, however our components are [open sourced on Github](https://github.com/Tiledesk) so once your self-hosted instance is properly set up, you can apply the following filters targeting them to your publicly-accessible instance:
 
-```php
+`
 // Console override
 add_filter( 'tiledesk_console_url', function ( $url ) {
     return 'https://your-console.example.com/v2/dashboard/#/project/';
 }, 10 );
+`
 
+`
 // JS SDK override
 add_filter( 'tiledesk_jssdk_url', function ( $url ) {
     return 'https://your-widget.example.com/v4/launch.js';
 }, 10 );
-```
+`
 
 = Are there any other resources I can use to learn more about Tiledesk? =
 
@@ -89,7 +91,24 @@ Yes. Most of the information you'll need is available on our website, but you ca
 - [Github Open Source](https://github.com/Tiledesk/)
 - [Discord Community](https://discord.gg/nERZEZ7SmG)
 
+== Screenshots ==
+
+1. Tiledesk - The all-in-one customer engagement platform.
+2. Chatbots and Humans happily together - Revolutionize your customer service with 24/7 instant replies.
+3. Engage your customers online and delight them.
+4. Best Al-Powered Chatbot to Generate Qualified Leads - Happier customers, faster-growing businesses.
+5. Chatbot Design Studio - Create chatbots & conversational apps with the most innovative no-code designer.
+6. Bring a Chatbot onboard - Use our Al to welcome visitors on your website, and much more.
+7. Merge all the most important messaging channels in a single Communication Hub.
+8. Try free templates or our no-code chatbot builder - Design your first Al chatbot with just one click.
+8. Quick and easy integration - the best tools for a faster integration with the services you already use.
+8. Adaptive Multichannel Chatbot Design - Design your chatbot once, run it on every channel.
+8. Conversational Ticketing - Convert your chats to support ticket.
+
 == Changelog ==
+
+= 1.0.3 =
+* This version improves deployment lifecycle
 
 = 1.0.2 =
 * Bug fixing and finalizing plugin for publishing
@@ -101,6 +120,9 @@ Yes. Most of the information you'll need is available on our website, but you ca
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+* This version improves deployment lifecycle. No upgrade is necessary.
 
 = 1.0.2 =
 * This version improves plugin security. Upgrade is strongly advised.

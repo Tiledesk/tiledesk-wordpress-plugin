@@ -1,0 +1,7 @@
+/.wordpress-org
+/.git
+/.github
+/.idea
+
+.distignore
+.gitignore
