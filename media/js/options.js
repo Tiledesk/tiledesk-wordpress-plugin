@@ -1,6 +1,4 @@
 var TiledeskChatWP = {
-    apiUrl: 'https://api.tiledesk.com/v2/',
-    chatUrl: 'https://www.tiledesk.com/',
     token: null,
     setRedirectLink: function (url) {
         jQuery('a[href="admin.php?page=tiledesk-chat"]')
@@ -34,7 +32,7 @@ var TiledeskChatWP = {
     getProjects: function (token) {
         jQuery.ajax({
             type: 'GET',
-            url: TiledeskChatWP.apiUrl + '/projects',
+            url: tiledesk_chat.api_url + '/projects',
             headers: { 'Authorization': token },
             success: function (response) {
                 console.log('response22', response)
@@ -79,7 +77,7 @@ var TiledeskChatWP = {
 
             login_button.prop('disabled', true).text('Loading...')
 
-            jQuery.post(TiledeskChatWP.apiUrl + 'auth/signin', {
+            jQuery.post(tiledesk_chat.api_url + 'auth/signin', {
                 email: email,
                 password: password,
             }, function (data) {
@@ -149,33 +147,6 @@ var TiledeskChatWP = {
                     login_button.trigger('click')
                 }
             })
-    },
-
-    // check this
-    accessTroughtXHR: function (_func) {
-        var xhr_url = TiledeskChatWP.apiUrl + '/access/external/create?url=' +
-            location.protocol + '//' + location.host + '&platform=wordpress'
-        jQuery.getJSON(xhr_url, {}, function (r) {
-            if (!r || !r.value) {
-                alert('Error occured while creating, please try again!')
-                return false
-            }
-            _func(
-                TiledeskChatWP.chatUrl + '/access?privateKey=' +
-                r.value.private_key +
-                '&app=chat&utm_source=platform&utm_medium=wordpress')
-            // save this in wordpress database
-            jQuery.post(ajaxurl, {
-                'action': 'tiledesk_chat_save_keys',
-                'public_key': r.value.public_key,
-                'private_key': r.value.private_key,
-            }, function (response) {
-
-            })
-
-        }).fail(function () {
-            alert('Error occured while creating, please try again!')
-        })
     },
 }
 

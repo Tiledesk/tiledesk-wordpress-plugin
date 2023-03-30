@@ -15,6 +15,7 @@
 define( 'TILEDESKCHAT_VERSION', '1.0.4' );
 
 class TiledeskLiveChat {
+	const API_URL = 'https://api.tiledesk.com/v2/';
 	const CONSOLE_URL = 'https://console.tiledesk.com/v2/dashboard/#/project/';
 	const PUBLIC_KEY_OPTION = 'tiledesk-one-public-key';
 	const PRIVATE_KEY_OPTION = 'tiledesk-one-private-key';
@@ -161,8 +162,15 @@ class TiledeskLiveChat {
 	}
 
 	public function enqueue_admin_scripts() {
-		wp_enqueue_script( 'tiledesk-chat-admin', plugins_url( 'media/js/options.js', __FILE__ ), [], TILEDESKCHAT_VERSION, true );
 		wp_enqueue_style( 'tiledesk-chat-admin-style', plugins_url( 'media/css/options.css', __FILE__ ), [], TILEDESKCHAT_VERSION );
+		wp_enqueue_script( 'tiledesk-chat-admin', plugins_url( 'media/js/options.js', __FILE__ ), [], TILEDESKCHAT_VERSION, true );
+
+		// Allow URL override
+		$api_url = apply_filters( 'tiledesk_api_url', TiledeskLiveChat::API_URL );
+
+		wp_localize_script( 'tiledesk-chat-admin', 'tiledesk_chat', [
+			'api_url' => $api_url,
+		] );
 	}
 
 	/**
