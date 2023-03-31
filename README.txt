@@ -67,19 +67,24 @@ Currently, Tiledesk for WordPress is available in English. Other languages are i
 
 This plugin exclusively works with our cloud platform, however our components are [open sourced on Github](https://github.com/Tiledesk) so once your self-hosted instance is properly set up, you can apply the following filters targeting them to your publicly-accessible instance:
 
-`
-// Console override
-add_filter( 'tiledesk_console_url', function ( $url ) {
-    return 'https://your-console.example.com/v2/dashboard/#/project/';
-}, 10 );
-`
-
-`
-// JS SDK override
-add_filter( 'tiledesk_jssdk_url', function ( $url ) {
-    return 'https://your-widget.example.com/v4/launch.js';
-}, 10 );
-`
+- API override
+  `
+  add_filter( 'tiledesk_api_url', function ( $url ) {
+      return 'https://api.tiledesk.com/v2/';
+  }, 10 );
+  `
+- Console override
+  `
+  add_filter( 'tiledesk_console_url', function ( $url ) {
+      return 'https://your-console.example.com/v2/dashboard/#/project/';
+  }, 10 );
+  `
+- JS SDK override
+  `
+  add_filter( 'tiledesk_jssdk_url', function ( $url ) {
+      return 'https://your-widget.example.com/v4/launch.js';
+  }, 10 );
+  `
 
 = Are there any other resources I can use to learn more about Tiledesk? =
 
