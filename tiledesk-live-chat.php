@@ -4,7 +4,7 @@
  * Plugin Name: Tiledesk Live Chat
  * Plugin URI: https://github.com/Tiledesk/tiledesk-wordpress-plugin
  * Description: Add Tiledesk Live Chat into your site allowing you to build complex conversational bots in just a few clicks.
- * Version: 1.0.6
+ * Version: 1.0.7
  * Author: tiledesk
  * Author URI: https://www.tiledesk.com/
  * License: GPLv2 or later
@@ -12,7 +12,7 @@
  * Text Domain: tiledesk-live-chat
  */
 
-define( 'TILEDESKCHAT_VERSION', '1.0.6' );
+define( 'TILEDESKCHAT_VERSION', '1.0.7' );
 
 class TiledeskLiveChat {
 	const API_URL = 'https://api.tiledesk.com/v3/';
@@ -22,7 +22,7 @@ class TiledeskLiveChat {
 	const ASYNC_LOAD_OPTION = 'tiledesk-async-load';
 	const CLEAR_ACCOUNT_DATA_ACTION = 'tiledesk-chat-reset';
 	const TILEDESK_PLUGIN_NAME = 'tiledesk-live-chat';
-	const JS_SDK = 'https://widget.tiledesk.com/v4/launch.js';
+	const JS_SDK = 'https://widget.tiledesk.com/v6/launch.js';
 
 	/**
 	 * Instruct WordPress on the actions to register and hooks to run in specific cases
