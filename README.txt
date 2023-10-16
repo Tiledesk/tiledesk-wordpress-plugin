@@ -2,7 +2,7 @@
 Contributors: tiledesk
 Tags: free live chat, chatbot, bot, ai, artificial, intelligence, ml, machine, learning, nlp, facebook, live chat, chat, livechat, tiledesk, widget, twitter, zendesk, mailchimp
 Requires at least: 5.0
-Tested up to: 6.3.1
+Tested up to: 6.3.2
 Stable tag: 1.0.8
 Requires PHP: 7.0
 License: GPLv2 or later
