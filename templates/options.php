@@ -31,7 +31,7 @@
                 <div id="tiledesk-apply-account">
                     That's alright, you can start using Tiledesk without having the login.
                 </div>
-                <a href="https://panel.tiledesk.com/v3/dashboard/#/login" id="redirect-to-panel" class="button button-primary tiledesk-button" target="_blank">Create a new account</a>
+                <a href="https://panel.tiledesk.com/v3/dashboard/#/signup" id="redirect-to-panel" class="button button-primary tiledesk-button" target="_blank">Create a new account</a>
             </div>
         </div>
         
