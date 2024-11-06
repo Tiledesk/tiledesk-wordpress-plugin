@@ -12,7 +12,7 @@
  * Text Domain: tiledesk-live-chat
  */
 
-define( 'TILEDESKCHAT_VERSION', '1.0.9' );
+define( 'TILEDESKCHAT_VERSION', '1.0.10' );
 
 class TiledeskLiveChat {
 	const API_URL = 'https://api.tiledesk.com/v3/';
