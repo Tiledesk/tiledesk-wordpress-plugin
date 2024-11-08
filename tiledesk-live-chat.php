@@ -4,7 +4,7 @@
  * Plugin Name: Tiledesk Live Chat
  * Plugin URI: https://github.com/Tiledesk/tiledesk-wordpress-plugin
  * Description: Add Tiledesk Live Chat into your site allowing you to build complex conversational bots in just a few clicks.
- * Version: 1.0.9
+ * Version: 1.0.11
  * Author: tiledesk
  * Author URI: https://www.tiledesk.com/
  * License: GPLv2 or later
