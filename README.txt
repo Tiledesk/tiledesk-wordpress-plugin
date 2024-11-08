@@ -24,7 +24,7 @@ Free live chat for your website with integrated chat bots. It integrates into yo
 
 Treat yourself to this game-changer feature: discover our [No-code Chatbot Design Studio](https://tiledesk.com/chatbot-design-studio/).
 
-[youtube https://www.youtube.com/watch?v=USVKeiiFZ7o]
+[youtube https://www.youtube.com/watch?v=re4xyveiWpw]
 
 We created Tiledesk as an open-source stack to provide a conversational platform that prioritizes privacy and lets companies keep their own data.
 
@@ -70,19 +70,19 @@ This plugin exclusively works with our cloud platform, however our components ar
 - API override
   `
   add_filter( 'tiledesk_api_url', function ( $url ) {
-      return 'https://api.tiledesk.com/v2/';
+      return 'https://your-api.example.com/';
   }, 10 );
   `
 - Console override
   `
   add_filter( 'tiledesk_console_url', function ( $url ) {
-      return 'https://your-console.example.com/v2/dashboard/#/project/';
+      return 'https://your-console.example.com/#/projects/';
   }, 10 );
   `
 - JS SDK override
   `
   add_filter( 'tiledesk_jssdk_url', function ( $url ) {
-      return 'https://your-widget.example.com/v4/launch.js';
+      return 'https://your-widget.example.com/launch.js';
   }, 10 );
   `
 
@@ -111,6 +111,9 @@ Yes. Most of the information you'll need is available on our website, but you ca
 8. Conversational Ticketing - Convert your chats to support ticket.
 
 == Changelog ==
+
+= 1.0.10 =
+* This version fixes old unexisting links.
 
 = 1.0.7 =
 * This version fixes widget version.
